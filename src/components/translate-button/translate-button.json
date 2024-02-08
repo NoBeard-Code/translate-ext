@@ -1,59 +1,52 @@
 {
-    "manifestVersion": 1,
-    "id": "azure-translator-api-extension",
-    "publisher": "FactoryX",
-    "version": "1.0.4",
-    "name": "Azure Translator API Action Button",
-    "description": "A configurable extension that provides an action button for translating fields by using Azure AI Translator API",
-    "public": false,
-    "categories": ["Azure Boards"],
-    "targets": [
-        {
-            "id": "Microsoft.VisualStudio.Services"
-        }
-    ],
-    "icons": {
-        "default": "assets/azure-translator.jpeg"
-    },
-    "tags": [
-        "action button",
-        "translation",
-        "Azure AI"
-    ],
     "contributions": [
         {
-            "id": "azure-translator-api-work-item-form-control",
+            "id": "TranslateButton",
             "type": "ms.vss-work-web.work-item-form-control",
             "targets": [
                 "ms.vss-work-web.work-item-form"
             ],
             "properties": {
                 "name": "Azure Translator API Action Button",
-                "uri": "workItemControl.html",
-                "height": 50,
+                "uri": "dist/TranslateButton/translate-button.html",
                 "inputs": [
                     {
-                        "id": "FieldName",
-                        "name": "The field containing text that should be translated",
-                        "description": "The field containing text that should be translated.",
-                        "type": "WorkItemField",
-                        "properties": {
-                            "workItemFieldTypes": ["HTML"]
-                        },
+                        "id": "ButtonTitle",
+                        "name": "Text you want displayed on the button",
+                        "description": "Text you want displayed on the button",
                         "validation": {
                             "dataType": "String",
                             "isRequired": true
                         }
                     },
                     {
+                        "id": "SourceFields",
+                        "name": "Fields of the work item you want to translate (comma separated)",
+                        "description": "Fields of the work item you want to translate (comma separated).",
+                        "validation": {
+                            "dataType": "String",
+                            "isRequired": true
+                        }
+                    },
+                    {
+                        "id": "AzureTranslatorApiEndpoint",
+                        "name": "URL you want to send your data to",
+                        "description": "URL you want to send your data to",
+                        "validation": {
+                            "dataType": "String",
+                            "isRequired": false
+                        }
+                    },
+                    {
                         "id": "SourceLanguage",
+                        "name": "The language of the original text",
                         "description": "The language of the original text that should be translated.",
                         "properties": {
                             "workItemFieldTypes": ["PicklistString"]
                         },
                         "validation": {
                             "dataType": "String",
-                            "isRequired": true
+                            "isRequired": false
                         },
                         "items": [
                             "English",
@@ -63,6 +56,7 @@
                     },
                     {
                         "id": "TargetLanguage",
+                        "name": "The language of the translated text",
                         "description": "The language that the text should be translated to.",
                         "properties": {
                             "workItemFieldTypes": ["PicklistString"]
@@ -81,15 +75,7 @@
             }
         }
     ],
-    "files": [
-        {
-            "path": "workItemControl.html",
-            "addressable": true
-        },
-        {
-            "path": "node_modules/azure-devops-extension-sdk",
-            "addressable": true,
-            "packagePath": "lib"
-        }
+    "scopes": [
+        "vso.work"
     ]
 }
