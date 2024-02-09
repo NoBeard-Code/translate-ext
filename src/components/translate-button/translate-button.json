@@ -47,6 +47,15 @@
                         }
                     },
                     {
+                        "id": "AzureTranslatorApiRegion",
+                        "name": "Region of the Azure AI Translator API",
+                        "description": "example: 'westeurope'",
+                        "validation": {
+                            "dataType": "String",
+                            "isRequired": true
+                        }
+                    },
+                    {
                         "id": "SourceLanguage",
                         "name": "The language of the original text",
                         "description": "example: 'de'",
