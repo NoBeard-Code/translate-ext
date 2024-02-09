@@ -1,19 +1,19 @@
 {
     "contributions": [
         {
-            "id": "TranslateButton",
+            "id": "translate-button",
             "type": "ms.vss-work-web.work-item-form-control",
             "targets": [
                 "ms.vss-work-web.work-item-form"
             ],
             "properties": {
                 "name": "Azure Translator API Action Button",
-                "uri": "dist/TranslateButton/translate-button.html",
+                "uri": "dist/translate-button/translate-button.html",
                 "inputs": [
                     {
                         "id": "ButtonTitle",
                         "name": "Text you want displayed on the button",
-                        "description": "Text you want displayed on the button",
+                        "description": "example: 'Translate to english'",
                         "validation": {
                             "dataType": "String",
                             "isRequired": true
@@ -22,60 +22,50 @@
                     {
                         "id": "SourceFields",
                         "name": "Fields of the work item you want to translate (comma separated)",
-                        "description": "Fields of the work item you want to translate (comma separated).",
+                        "description": "example: 'Beschreibung,Akzeptanzkriterien'",
                         "validation": {
                             "dataType": "String",
                             "isRequired": true
                         }
                     },
                     {
-                        "id": "AzureTranslatorApiEndpoint",
-                        "name": "URL you want to send your data to",
-                        "description": "URL you want to send your data to",
+                        "id": "DestinationFields",
+                        "name": "Fields that will contain the translated texts (comma separated)",
+                        "description": "example: 'Description,Acceptance Criteria'",
                         "validation": {
                             "dataType": "String",
-                            "isRequired": false
+                            "isRequired": true
+                        }
+                    },
+                    {
+                        "id": "AzureTranslatorApiKey",
+                        "name": "Secret key used to access Azure AI Translator API",
+                        "description": "example: '13231321321321321321321321'",
+                        "validation": {
+                            "dataType": "String",
+                            "isRequired": true
                         }
                     },
                     {
                         "id": "SourceLanguage",
                         "name": "The language of the original text",
-                        "description": "The language of the original text that should be translated.",
-                        "properties": {
-                            "workItemFieldTypes": ["PicklistString"]
-                        },
+                        "description": "example: 'de'",
                         "validation": {
                             "dataType": "String",
-                            "isRequired": false
-                        },
-                        "items": [
-                            "English",
-                            "German",
-                            "Croatian"
-                        ]
+                            "isRequired": true
+                        }
                     },
                     {
                         "id": "TargetLanguage",
                         "name": "The language of the translated text",
-                        "description": "The language that the text should be translated to.",
-                        "properties": {
-                            "workItemFieldTypes": ["PicklistString"]
-                        },
+                        "description": "example: 'hr'",
                         "validation": {
                             "dataType": "String",
                             "isRequired": true
-                        },
-                        "items": [
-                            "English",
-                            "German",
-                            "Croatian"
-                        ]
+                        }
                     }
                 ]
             }
         }
-    ],
-    "scopes": [
-        "vso.work"
     ]
 }

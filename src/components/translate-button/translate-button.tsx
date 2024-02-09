@@ -37,10 +37,10 @@ export class TranslateButton extends Component<{},  TranslateButtonComponentStat
         SDK.ready().then(
             () => {
                 SDK.notifyLoadSucceeded();
-                this.setState({
-                    buttonText: SDK.getConfiguration().witInputs["ButtonTitle"]
-                })
-                SDK.resize();
+                // this.setState({
+                //     buttonText: SDK.getConfiguration().witInputs["ButtonTitle"]
+                // });
+                // SDK.resize();
             }
         )
     }
@@ -48,47 +48,6 @@ export class TranslateButton extends Component<{},  TranslateButtonComponentStat
     private registerEvents() {
         SDK.register(SDK.getContributionId(), () => {
           return {
-            // Called when the active work item is modified
-            onFieldChanged: (args: IWorkItemFieldChangedArgs) => {
-              this.setState({
-                eventContent: `onFieldChanged - ${JSON.stringify(args)}`
-              });
-            },
-    
-            // Called when a new work item is being loaded in the UI
-            onLoaded: (args: IWorkItemLoadedArgs) => {
-              this.setState({
-                eventContent: `onLoaded - ${JSON.stringify(args)}`
-              });
-            },
-    
-            // Called when the active work item is being unloaded in the UI
-            onUnloaded: (args: IWorkItemChangedArgs) => {
-              this.setState({
-                eventContent: `onUnloaded - ${JSON.stringify(args)}`
-              });
-            },
-    
-            // Called after the work item has been saved
-            onSaved: (args: IWorkItemChangedArgs) => {
-              this.setState({
-                eventContent: `onSaved - ${JSON.stringify(args)}`
-              });
-            },
-    
-            // Called when the work item is reset to its unmodified state (undo)
-            onReset: (args: IWorkItemChangedArgs) => {
-              this.setState({
-                eventContent: `onReset - ${JSON.stringify(args)}`
-              });
-            },
-    
-            // Called when the work item has been refreshed from the server
-            onRefreshed: (args: IWorkItemChangedArgs) => {
-              this.setState({
-                eventContent: `onRefreshed - ${JSON.stringify(args)}`
-              });
-            }
           };
         });
       }
@@ -104,21 +63,21 @@ export class TranslateButton extends Component<{},  TranslateButtonComponentStat
                 <pre className="resultbox depth-4 padding-4 font-size-xs custom-scrollbar">
                     {this.state.translatedText}
                 </pre>
-                <div className="sample-work-item-events">{this.state.eventContent}</div>
             </div>
         )
     }
 
     private async onClick() {
         const fields : Array<string> = SDK.getConfiguration().witInputs["SourceFields"].split(",");
-        const endpoint: string = SDK.getConfiguration().witInputs["AzureTranslatorApiEndpoint"];
+        const secretKey: string = SDK.getConfiguration().witInputs["AzureTranslatorApiKey"];
 
         const workItemFormService = await SDK.getService<IWorkItemFormService>(WorkItemTrackingServiceIds.WorkItemFormService);
         
-        workItemFormService.setFieldValue(
-          "System.Title",
-          "Title set from your group extension!"
-        );
+        alert("helou!");
+        // workItemFormService.setFieldValue(
+        //   "System.Title",
+        //   "Title set from your group extension!"
+        // );
       }
 }
 
