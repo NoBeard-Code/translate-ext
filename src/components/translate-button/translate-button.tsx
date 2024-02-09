@@ -118,7 +118,7 @@ export class TranslateButton extends Component<{}, TranslateButtonComponentState
         const workItemFormService = await SDK.getService<IWorkItemFormService>(WorkItemTrackingServiceIds.WorkItemFormService);
         
         let translationCalls = new Array<Promise<any>>();
-        const options = new Options();
+        const options = new Options().returnOriginalValue = false;
 
         for (let i = 0; i < sourceFields.length; i++) {
             const fieldValue = await workItemFormService.getFieldValue(sourceFields[i], options);
