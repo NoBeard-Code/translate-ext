@@ -2,10 +2,10 @@
     "manifestVersion": 1,
     "id": "azure-translator-api-extension",
     "publisher": "NoBeard",
-    "version": "1.0.21",
+    "version": "1.0.24",
     "name": "Azure Translator API Action Button",
     "description": "A configurable extension that provides an action button for translating fields by using Azure AI Translator API",
-    "public": false,
+    "public": true,
     "categories": ["Azure Boards"],
     "targets": [
         {
